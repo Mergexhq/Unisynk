@@ -1,126 +1,171 @@
-# Unisynk Frontend
+# Unisynk
 
-A modern, responsive frontend for the Unisynk event management platform built with Next.js 16, TypeScript, and Tailwind CSS.
+**A smart event management and collaboration platform** designed for agencies, teams, and creators. Streamline projects, clients, tasks, and automation all in one unified dashboard.
 
-## 🚀 Features Implemented (Phase 1)
+---
 
-### Public Site & Growth
-- ✅ **Homepage** (`/`) - Hero section, features, verticals showcase
-- ✅ **Pricing** (`/pricing`) - Tier comparison with Free, Pro, Business, Enterprise plans
-- ✅ **Blog** (`/blog`) - Article listing with categories and search
-- ✅ **Documentation** (`/docs`) - Organized help sections and popular articles
-- ✅ **Referral Program** (`/referral`) - Referral code sharing and stats
-- ✅ **Ambassador Program** (`/ambassador`) - Application form and benefits
+## Frontend Application
 
-### Auth & Onboarding
-- ✅ **Login** (`/auth/login`) - Email/password authentication
-- ✅ **Signup** (`/auth/signup`) - User registration form
-- ✅ **Onboarding** (`/onboarding`) - Multi-step org/event setup wizard
+A modern, responsive frontend built with **Next.js 16**, **TypeScript**, and **Tailwind CSS**.
 
-### Dashboard
-- ✅ **Dashboard Home** (`/dashboard`) - Event overview, stats, quick actions
-- ✅ **Navigation** - Responsive header with search, notifications, theme toggle
+---
 
-### Profile & Settings
-- ✅ **Profile** (`/profile`) - Personal info, password change, notifications
-- ✅ **Organization Settings** (`/dashboard/settings`) - Org details, team management, branding
+## 🚀 Quick Start
+
+### Local Development
+
+```bash
+cd frontend
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build for Production
+
+```bash
+pnpm build
+pnpm start
+```
+
+---
+
+## ✨ Features
+
+- **Next.js 16 App Router** - Modern routing with server components
+- **TypeScript** - Full type safety
+- **Tailwind CSS** - Utility-first styling
+- **Radix UI + ShadCN** - Accessible component library
+- **Supabase Auth** - Authentication ready
+- **Modular Architecture** - Clean, scalable structure
+- **Dark/Light Mode** - Theme toggle with next-themes
+- **Responsive Design** - Mobile-first approach
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/             # Next.js pages (routes)
+├── components/      # Shared UI components
+│   ├── ui/         # Base design system
+│   ├── buttons/    # Button components
+│   ├── forms/      # Form components
+│   └── providers/  # Context providers
+├── layout/          # Layout primitives
+│   ├── navigation/ # Navigation components
+│   └── wrappers/   # Auth/Role guards
+├── modules/         # Feature modules
+│   ├── auth/       # Authentication
+│   ├── dashboard/  # Dashboard features
+│   ├── onboarding/ # Onboarding flow
+│   └── microsite/  # Microsite builder
+├── lib/             # Core utilities & services
+├── hooks/           # Custom React hooks
+├── types/           # TypeScript types
+└── styles/          # Global CSS
+```
+
+---
+
+## 🏗 Architecture
+
+This project follows **clean architecture principles** with:
+
+- **Feature-based modules** - Self-contained business logic
+- **Separation of concerns** - Routes, modules, components, layout
+- **Strategic barrel exports** - Optimized for tree-shaking
+- **Kebab-case naming** - Consistent file naming convention
+
+See `documents/adr/` for detailed architecture decisions.
+
+---
 
 ## 🎨 Design System
 
-### Theme
-- **Colors**: Black with purple accents (similar to Supabase)
+- **Colors**: Black with purple accents (Supabase-inspired)
 - **Primary**: Purple (`#8B5CF6`)
-- **Dark/Light mode**: Fully supported with theme toggle in footer
 - **Typography**: Inter font family
+- **Icons**: Lucide React
+- **Components**: Radix UI primitives + custom styling
 
-### Components
-- Built with **Radix UI** primitives for accessibility
-- **ShadCN** component library for consistent styling
-- **Lucide React** icons throughout
-- Responsive design with mobile-first approach
+---
+
+## 📚 Documentation
+
+- **[Architecture Guide](./documents/general/ARCHITECTURE.md)** - Complete structure overview
+- **[Quick Reference](./documents/general/QUICK-REFERENCE.md)** - Import patterns & examples
+- **[ADRs](./documents/adr/)** - Architecture decision records
+
+---
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 16 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v3
-- **UI Components**: Radix UI + ShadCN
-- **Icons**: Lucide React
-- **Theme**: next-themes for dark/light mode
-- **State Management**: Zustand (ready for implementation)
-- **Package Manager**: pnpm
+| Category | Technology |
+|----------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| UI Components | Radix UI + ShadCN |
+| State Management | Zustand |
+| Icons | Lucide React |
+| Backend | Supabase |
+| Package Manager | pnpm |
 
-## 🏗 Project Structure
+---
 
+## � Dev elopment Guidelines
+
+### Naming Convention
+- **Files/Folders**: `kebab-case` (e.g., `auth-layout.tsx`)
+- **Components**: `PascalCase` exports (e.g., `export function AuthLayout()`)
+- **Hooks**: `camelCase` exports (e.g., `export function useAuth()`)
+
+### Import Patterns
+```typescript
+// UI Components (direct imports)
+import { Button } from '@/components/ui/button'
+
+// Layout Components
+import { DashboardLayout } from '@/layout'
+import { Sidebar, TopNav } from '@/layout/navigation'
+
+// Modules (named exports)
+import { AuthLayout } from '@/modules/auth'
+import { MicrositeBuilder } from '@/modules/microsite'
+
+// Hooks
+import { useApi, useDebounce } from '@/hooks'
 ```
-frontend/
-├── app/                    # Next.js App Router pages
-│   ├── auth/              # Authentication pages
-│   ├── dashboard/         # Dashboard pages
-│   ├── blog/              # Blog pages
-│   ├── docs/              # Documentation
-│   ├── pricing/           # Pricing page
-│   ├── referral/          # Referral program
-│   ├── ambassador/        # Ambassador program
-│   └── profile/           # User profile
-├── components/            # Reusable components
-│   ├── ui/               # Base UI components
-│   ├── navigation.tsx    # Main navigation
-│   ├── footer.tsx        # Site footer
-│   └── theme-provider.tsx # Theme context
-└── lib/                  # Utilities
-    └── utils.ts          # Helper functions
-```
 
-## 🚀 Getting Started
+---
 
-1. **Install dependencies**:
-   ```bash
-   pnpm install
-   ```
+## 🚀 Deployment
 
-2. **Run development server**:
-   ```bash
-   pnpm dev
-   ```
+The frontend is optimized for deployment on:
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **AWS Amplify**
+- Any Node.js hosting platform
 
-3. **Open in browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000)
+---
 
-## 📱 Responsive Design
+## 🤝 Contributing
 
-- **Mobile-first**: Optimized for mobile devices
-- **Breakpoints**: Tailwind's responsive system
-- **Navigation**: Collapsible mobile menu (ready for implementation)
-- **Cards**: Responsive grid layouts
+1. Follow the established architecture patterns
+2. Use kebab-case for all files
+3. Add types for all components
+4. Document complex logic
+5. Test before committing
 
-## 🎯 Next Steps (Phase 2)
+---
 
-- [ ] Event management pages
-- [ ] Attendee management
-- [ ] Automation builder UI
-- [ ] Integration settings
-- [ ] Analytics dashboard
-- [ ] Real authentication integration
-- [ ] API integration layer
-- [ ] Form validation with Zod
-- [ ] Toast notifications
-- [ ] Loading states
+## 📄 License
 
-## 🔧 Development
+This project is part of the Unisynk platform.
 
-The app uses:
-- **Hot reload** for instant development feedback
-- **TypeScript** for type safety
-- **ESLint** for code quality
-- **Tailwind CSS** for rapid styling
+---
 
-## 🌟 Key Features
-
-- **Theme Toggle**: Dark/light mode in footer (Supabase-style)
-- **Accessibility**: Built with Radix UI for screen reader support
-- **Performance**: Next.js 16 with Turbopack for fast builds
-- **SEO Ready**: Proper meta tags and semantic HTML
-- **Responsive**: Works on all device sizes
-
-The frontend is now ready for Phase 2 development and backend integration!
+**Built with ❤️ by the Mergex team**
