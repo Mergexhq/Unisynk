@@ -1,6 +1,7 @@
 # Unisynk
 
 **A smart event management and collaboration platform** designed for agencies, teams, and creators. Streamline projects, clients, tasks, and automation all in one unified dashboard.
+![Unisynk-OG](https://github.com/user-attachments/assets/445be874-8db3-4687-a080-2f98e68cbb94)
 
 ---
 
